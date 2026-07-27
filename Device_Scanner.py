@@ -4,6 +4,7 @@
 
 import socket
 import uuid
+import platform
 
 print("\n======================")
 print("=== Device Scanner ===")
@@ -26,5 +27,7 @@ mac_address = ':'.join(f"{(mac >> ele) & 0xff:02X}" for ele in range(40, -1, -8)
 
 # _________________________________________________________________________________________________
 
+operating_system = f"{platform.system()} {platform.release()}"
 
+# _________________________________________________________________________________________________
 
