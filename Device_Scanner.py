@@ -31,3 +31,12 @@ operating_system = f"{platform.system()} {platform.release()}"
 
 # _________________________________________________________________________________________________
 
+print(f"\nDevice Name   : {device_name}")
+print(f"IP Address    : {ip_address}")
+print(f"MAC Address   : {mac_address}")
+print(f"Operating Sys : {operating_system}")
+
+print("\nAnalysis Complete")
+
+# _________________________________________________________________________________________________
+
