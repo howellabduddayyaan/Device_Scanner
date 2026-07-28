@@ -5,15 +5,21 @@
 import socket
 import uuid
 import platform
+import psutil
 
 print("\n======================")
 print("=== Device Scanner ===")
 print("======================")
 
+# _________________________________________________________________________________________________
+
+# --- Device Name ---
 
 device_name = socket.gethostname()
 
 # _________________________________________________________________________________________________
+
+# --- IP Address ---
 
 try:
     ip_address = socket.gethostbyname(device_name)
@@ -22,21 +28,27 @@ except:
     
 # _________________________________________________________________________________________________
 
+# --- MAC Address ---
+
 mac = uuid.getnode()
 mac_address = ':'.join(f"{(mac >> ele) & 0xff:02X}" for ele in range(40, -1, -8))
 
 # _________________________________________________________________________________________________
 
+# --- Operating System ---
+
 operating_system = f"{platform.system()} {platform.release()}"
 
 # _________________________________________________________________________________________________
 
-print(f"\nDevice Name   : {device_name}")
-print(f"IP Address    : {ip_address}")
-print(f"MAC Address   : {mac_address}")
-print(f"Operating Sys : {operating_system}")
+# --- CPU Information ---
 
-print("\nAnalysis Complete")
+processor = platform.processor()
+
+physical_cores = psutil.cpu_count(logical=False)
+logical_cores = psutil.cpu_count(logical=True)
+
+cpu_usage = psutil.cpu_percent(interval=1)
 
 # _________________________________________________________________________________________________
 
